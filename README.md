@@ -75,7 +75,7 @@ Suppose you use Git Bash from now.
 First, Download the private key MedicalDrone from master branch.  
 Second, create the directory \~/.ssh and copy the MedicalDrone file to this directory.  
 Third, create a file \~/.bashrc, paste the following and save:  
-'''  
+
     
     env=~/.ssh/agent.env
 
@@ -98,7 +98,7 @@ Third, create a file \~/.bashrc, paste the following and save:
     fi
     
     unset env
-'''
+
 
 Restart the git bash and now you should be able to access our repo with ssh.  
 To do this, go to your project directory and input:
