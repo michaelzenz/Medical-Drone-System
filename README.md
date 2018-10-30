@@ -74,9 +74,9 @@ Suppose you use Git Bash from now.
 
 First, Download the private key MedicalDrone from master branch.  
 Second, create the directory ~/.ssh and copy the MedicalDrone file to this directory.  
-Third, create a file ~/.bashrc, paste the following and save:
-env=~/.ssh/agent.env
-
+Third, create a file \~/.bashrc, paste the following and save:
+>env=~/.ssh/agent.env
+>
 >agent_load_env () { test -f "$env" && . "$env" >| /dev/null ; }
 >
 >agent_start () {
