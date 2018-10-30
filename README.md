@@ -5,14 +5,14 @@ A medical drone system project for UCI EECS 159: Senior Design
 
 
 
-##How to use Github for our project
+## How to use Github for our project
 
-###Create a Github account
+### Create a Github account
 
 Create a github account and email me the email and username you use to register Github.  
 zhifanz1@uci.edu  
 I will add you to the owner of our project repo.
-###Install Github Desktop
+### Install Github Desktop
 
 Download and install Github Desktop here:
 https://desktop.github.com/
@@ -37,7 +37,7 @@ Optional:install Git For Windows<br>
 You are recomanded to install Git For Windows here: https://gitforwindows.org/ <br>
 It will accelerate your development.
 
-###Setup local environment
+### Setup local environment
 Open cmd, cd to your project directory and type:
 >git init
 
