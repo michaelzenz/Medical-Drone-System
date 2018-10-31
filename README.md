@@ -96,7 +96,7 @@ Third, create a file \~/.bashrc, paste the following and save:
     elif [ "$SSH_AUTH_SOCK" ] && [ $agent_run_state = 1 ]; then
         ssh-add
     fi
-    
+    ssh-add ~/.ssh/MedicalDrone
     unset env
 
 
