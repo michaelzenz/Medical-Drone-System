@@ -107,16 +107,16 @@ To do this, go to your project directory and input:
 Now you should be able to push directly.
 
 
-###EDIT:
+### EDIT:
 
 As I have build all the branches for us, you can just:
->git init
->git remote add origin https://github.com/MICHAEL-ZENGZF/Medical-Drone-System.git
->git pull
->git checkout branch_name
+>git init<br>
+>git remote add origin https://github.com/MICHAEL-ZENGZF/Medical-Drone-System.git<br>
+>git pull<br>
+>git checkout branch_name<br>
 >git add *<br>
->git commit -m "First Commit"
->git push --set-upstream origin branch_name
+>git commit -m "First Commit"<br>
+>git push --set-upstream origin branch_name<br>
 
 After that you can just input:
->git push
+>git push<br>
