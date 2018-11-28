@@ -14,7 +14,7 @@ There will be a goal for each part of the project, and each member will be assig
 
 Stick to this and let`s make something big : )
 ### Nov.28 to Dec.9
-####Goal for this week  
+#### Goal for this week  
 
 |Section| Goal | Progress |
 |---| ---  |---|
@@ -23,7 +23,7 @@ Stick to this and let`s make something big : )
 | Server|Build the servlet for the server and a module for Android to communicate with server||
 |Computer Vision|No mission for this week||
 
-####Duty
+#### Duty
 
 |Member| Duty |
 |---| ---|
