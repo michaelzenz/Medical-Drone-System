@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<welcome-file-list>
-        <welcome-file>index.html</welcome-file>
-        <welcome-file>index.htm</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
-</welcome-file-list>
 <module type="JAVA_MODULE" version="4">
   <component name="FacetManager">
     <facet type="web" name="Web">
