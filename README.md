@@ -18,9 +18,9 @@ Stick to this and let`s make something big : )
 
 |Section| Goal | Progress |
 |---| ---  |---|
-| User App | Build the basic part of the App, Make sure every element on the layout has a corresponding listener | |
+| User App | Build the basic part of the App, Make sure every element on the layout has a corresponding listener |Server can be connected now |
 | Control App|Learn how to use Mobile SDK, try to do some basic flight control on the simulator | |
-| Server|Build the servlet for the server and a module for Android to communicate with server||
+| Server|Build the servlet for the server and a module for Android to communicate with server|Msg from Android can be handled now|
 |Computer Vision|No mission for this week||
 
 #### Duty
