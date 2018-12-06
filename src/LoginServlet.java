@@ -35,9 +35,15 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         if("123".equals(username) && "123".equals(password)){
+<<<<<<< HEAD
             response.getOutputStream().write("Login Succeed".getBytes());
         }else{
             response.getOutputStream().write("Login Fail".getBytes());
+=======
+            response.getOutputStream().write("登录成功".getBytes());
+        }else{
+            response.getOutputStream().write("登录信息有误".getBytes());
+>>>>>>> b539762db23331f98ca6daabe782965acc0b72c1
         }
     }
     /**
@@ -46,6 +52,7 @@ public class LoginServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // TODO Auto-generated method stub
         System.out.println("doPost");
+<<<<<<< HEAD
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -58,3 +65,10 @@ public class LoginServlet extends HttpServlet {
     }
 
 }
+=======
+        doGet(request, response);
+
+    }
+
+}
+>>>>>>> b539762db23331f98ca6daabe782965acc0b72c1
