@@ -22,6 +22,7 @@ Stick to this and let`s make something big : )
 | Control App|Learn how to use Mobile SDK, try to do some basic flight control on the simulator | |
 | Server|Build the servlet for the server and a module for Android to communicate with server|Msg from Android can be handled now|
 |Computer Vision|No mission for this week||
+|Data Base|Build a java class with entities that allows to add userid, username, password and request higtory, using MySQL||
 
 #### Duty
 
@@ -30,6 +31,6 @@ Stick to this and let`s make something big : )
 | Michael | Server Communication |
 |Colonel|Control App Development|
 |Alex|User App Development|
-|Weixi|Build a website for exhibition by wix|
+|Weixi|Build a website for exhibition by wix, develop Data Base part|
 
 
