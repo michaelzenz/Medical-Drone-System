@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">AirLife</string>
+    <string name="locate">LOCATE</string>
+    <string name="text_view">Current Location Information:</string>
+    <string name="map">MAP</string>
+    <string name="title_activity_maps">Map</string>
+</resources>
