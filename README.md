@@ -5,32 +5,26 @@ A medical drone system project for UCI EECS 159: Senior Design
 
 <br><br><br>
 
-## Week Plan
+## Double Week Plan
 
-### How we gonna cooperate
-
-Starting from this week, we are gonna post our week plan and progress on the Github.  
-There will be a goal for each part of the project, and each member will be assigned missions.
-
-Stick to this and let`s make something big : )
-### Nov.28 to Dec.9
-#### Goal for this week  
+### Dec.12 to Dec.26
+#### Goal
 
 |Section| Goal | Progress |
 |---| ---  |---|
-| User App | Build the basic part of the App, Make sure every element on the layout has a corresponding listener |Server can be connected now |
-| Control App|Learn how to use Mobile SDK, try to do some basic flight control on the simulator | |
-| Server|Build the servlet for the server and a module for Android to communicate with server|Msg from Android can be handled now|
-|Computer Vision|No mission for this week||
+| User App | Create UI and use websocket to connect| |
+| Control App|Learn how to use Mobile SDK, try to do some basic flight control on the simulator, answer call from user | |
+| Server|Create Connection using websocket|Msg from Android can be handled now|
+|Computer Vision|Investigate and if possible, train tiny yolo on Android, and work out demo of AprilTag||
 |Data Base|Build a java class with entities that allows to add userid, username, password and request higtory, using MySQL||
 
 #### Duty
 
-|Member| Duty |
-|---| ---|
-| Michael | Server Communication |
-|Colonel|Control App Development|
-|Alex|User App Development|
-|Weixi|Build a website for exhibition by wix, develop Data Base part|
+|Member| Duty | Progress |
+|---| ---|---|
+| Michael | Server Communication, Tiny YOLO||
+|Colonel|Control App Development||
+|Alex|User App Development||
+|Weixi|Build a website for exhibition by wix, develop Data Base part||
 
 
