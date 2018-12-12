@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.crypto.Data;
 
 import org.json.simple.JSONObject;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 public class ReceiveGPSServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
@@ -34,14 +36,19 @@ public class ReceiveGPSServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {
         // TODO Auto-generated method stub
-        System.out.println("doPost");
-        String GPS = request.getParameter("GPS");
+        String Longitude = request.getParameter("Longitude");
+        String Latitude  = request.getParameter("Latitude");
         PrintWriter response_out = response.getWriter();
 
+        if(Longitude == null)Longitude="";
+        if(Latitude == null)Latitude="";
+        JSONObject obj= new JSONObject();
+        String GPS="Longitude: "+Longitude+"  Latitude: "+Latitude;
+        obj.put("Longitude",Longitude);
+        obj.put("Latitude",Latitude);
+        System.out.println(GPS);
         ServletContext context = getServletContext();
         String contextPath = context.getRealPath(File.separator);
-        JSONObject obj= new JSONObject();
-        obj.put("UserLocation",GPS);
         String path;
         String system_name=System.getProperty("os.name");
         if(system_name.contains("Windows") || system_name.contains("windows"))
@@ -58,14 +65,7 @@ public class ReceiveGPSServlet extends HttpServlet {
         out_file.write(obj.toJSONString());
         out_file.close();
 
-        try
-        {
-            Integer.parseInt(GPS);
-            response_out.write("GPS Data Received, Current Location: "+GPS);
-
-        }catch (NumberFormatException e){
-            response_out.write("Login Fail");
-        }
+        response_out.write("GPS Data Received, Current Location: "+GPS);
 
     }
 }

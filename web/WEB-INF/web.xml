@@ -3,32 +3,9 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-<<<<<<< HEAD
-=======
 
-    <servlet>
-        <servlet-name>HalloServlet</servlet-name>
-        <servlet-class>HalloServlet</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>HalloServlet</servlet-name>
-        <url-pattern>/HalloServlet</url-pattern>
-    </servlet-mapping>
 
->>>>>>> b539762db23331f98ca6daabe782965acc0b72c1
-    <servlet>
-        <servlet-name>LoginServlet</servlet-name>
-        <servlet-class>LoginServlet</servlet-class>
-    </servlet>
-<<<<<<< HEAD
 
-=======
->>>>>>> b539762db23331f98ca6daabe782965acc0b72c1
-    <servlet-mapping>
-        <servlet-name>LoginServlet</servlet-name>
-        <url-pattern>/LoginServlet</url-pattern>
-    </servlet-mapping>
-<<<<<<< HEAD
     <servlet>
         <servlet-name>ReceiveGPSServlet</servlet-name>
         <servlet-class>ReceiveGPSServlet</servlet-class>
@@ -38,7 +15,4 @@
         <servlet-name>ReceiveGPSServlet</servlet-name>
         <url-pattern>/ReceiveGPSServlet</url-pattern>
     </servlet-mapping>
-=======
-
->>>>>>> b539762db23331f98ca6daabe782965acc0b72c1
 </web-app>

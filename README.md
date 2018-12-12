@@ -11,3 +11,4 @@ Go to out\artifacts\Server_war_exploded, do git push there and it will push the 
 ## where is the Server
 
 At 18.221.10.160, http://18.221.10.160:8080/MedicalDrone/ReceiveGPSServlet is the servlet URL
+http://3.16.180.60:8081/MedicalDrone/index.jsp is the test demo
