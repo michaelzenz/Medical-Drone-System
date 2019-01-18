@@ -23,18 +23,20 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements ServerConnection.onResponseReadyListener{
     private ServerConnection connection;
-    private Button button,button1;
+    private Button btn_locate,btn_map,btn_reset;
     private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         connection=new ServerConnection(this);
-        button = (Button) findViewById(R.id.locate);
-        button1 = (Button) findViewById(R.id.map);
+        btn_locate = (Button) findViewById(R.id.btn_locate);
+        btn_map = (Button) findViewById(R.id.btn_map);
+        btn_reset=(Button) findViewById(R.id.btn_reset);
+
         textView = (TextView) findViewById(R.id.textView);
 
-        button.setOnClickListener(new View.OnClickListener() {
+        btn_locate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
         });
 
         //jump to google map API activity
-        button1.setOnClickListener(new View.OnClickListener() {
+        btn_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent=new Intent(MainActivity.this, MapsActivity.class);
@@ -67,7 +69,14 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
             }
         });
 
-
+        btn_reset.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                connection.SendGPSbyPost("0.0","0.0");
+            }
+        });
     }
 
     //check if the permission is granted

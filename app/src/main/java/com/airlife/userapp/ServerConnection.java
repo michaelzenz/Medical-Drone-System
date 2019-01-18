@@ -27,6 +27,7 @@ import java.io.IOException;
 public class ServerConnection
 {
 
+    //go to http://3.16.180.60:8081/MedicalDrone/index.jsp for test result
     final private String local_url = "http://10.0.2.2:8080/Server_war_exploded/ReceiveGPSServlet";//for local debug
     final private String url = "http://3.16.180.60:8081/MedicalDrone/ReceiveGPSServlet";//servlet location
 
