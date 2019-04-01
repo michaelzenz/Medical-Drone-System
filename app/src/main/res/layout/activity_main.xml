@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="150dp"
+        android:layout_marginTop="0dp"
+        android:src="@drawable/airlife_logo" />
+
 
     <Button
         android:id="@+id/btn_locate"
@@ -14,9 +20,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginStart="115dp"
+        android:layout_marginTop="250dp"
         android:text="@string/locate"
+        android:drawableLeft="@drawable/ic_gps_fixed_black_24dp"
         tools:layout_editor_absoluteX="16dp"
         tools:layout_editor_absoluteY="5dp" />
 
@@ -26,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="126dp"
+        android:layout_marginTop="466dp"
         android:text="@string/text_view"
         tools:layout_editor_absoluteX="128dp"
         tools:layout_editor_absoluteY="213dp" />
@@ -37,9 +44,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btn_locate"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="0dp"
-        android:layout_toEndOf="@+id/btn_locate"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="50dp"
+        android:drawableLeft="@drawable/ic_map_black_24dp"
+        android:layout_toTopOf="@+id/btn_locate"
         android:text="@string/map" />
 
     <Button
@@ -48,7 +56,41 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/btn_locate"
         android:layout_alignParentEnd="true"
+        android:drawableLeft="@drawable/ic_refresh_black_24dp"
         android:layout_marginEnd="90dp"
         android:text="Reset" />
+
+    <Button
+        android:id="@+id/btn_cancel"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:drawableLeft="@drawable/ic_cancel_black_24dp"
+        android:layout_marginTop="250dp"
+
+
+        android:text="CANCEL" />
+
+    <Button
+        android:id="@+id/btn_start"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="120dp"
+        android:drawableLeft="@drawable/ic_play_circle_filled_black_24dp"
+        android:layout_marginTop="155dp"
+        android:text="START" />
+
+    <Button
+        android:id="@+id/btn_pause"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:drawableLeft="@drawable/ic_pause_circle_filled_black_24dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="200dp"
+
+        android:text="PAUSE" />
 
 </RelativeLayout>
