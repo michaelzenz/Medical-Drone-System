@@ -23,7 +23,7 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements ServerConnection.onResponseReadyListener{
     private ServerConnection connection;
-    private Button btn_locate,btn_map,btn_reset;
+    private Button btn_locate,btn_map,btn_reset,btn_request;
     private TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
         btn_locate = (Button) findViewById(R.id.btn_locate);
         btn_map = (Button) findViewById(R.id.btn_map);
         btn_reset=(Button) findViewById(R.id.btn_reset);
-
+        btn_request=(Button) findViewById(R.id.btn_request);
         textView = (TextView) findViewById(R.id.textView);
 
         btn_locate.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +74,15 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
             @Override
             public void onClick(View v)
             {
-                connection.SendGPSbyPost("0.0","0.0");
+                connection.SendGPSbyPost("0.0","0.0","Cancel");
+            }
+        });
+        btn_request.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                connection.SendGPSbyPost("0.0","0.0","Request");
             }
         });
     }
@@ -138,7 +146,7 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
             try
             {
                 //then call this method to send
-                connection.SendGPSbyPost(((Double)location.getLongitude()).toString(),((Double)location.getLatitude()).toString());
+                connection.SendGPSbyPost(((Double)location.getLongitude()).toString(),((Double)location.getLatitude()).toString(),"Request");
             }catch (Exception e){
                 e.printStackTrace();
             }
