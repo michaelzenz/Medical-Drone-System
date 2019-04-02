@@ -24,9 +24,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements ServerConnection.onResponseReadyListener{
+    private boolean permissionGranted=false;
     private ServerConnection connection;
     private Button btn_locate,btn_map,btn_reset, btn_pause, btn_start, btn_cancel;
     private TextView textView;
+    private Location curLocation;
 
 	float x1,x2,y1,y2;//check the swipe status
     
@@ -47,28 +49,28 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
         btn_locate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-                        != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)!=
-                        PackageManager.PERMISSION_GRANTED){
-                    requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1);
-                } else{
-                    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                    Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                    try {
-                        String city = hereLocation(location.getLatitude(),location.getLongitude());
-                        updateShow(location, city);
-                        sendGPSLocation(location, connection);
-                    } catch(Exception e){
-                        e.printStackTrace();
-                        Toast.makeText(MainActivity.this,"Not Found!",Toast.LENGTH_SHORT).show();
-                    }
-
+                if(!permissionGranted)checkPermission();
+                LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+                Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+                try {
+                    String city = hereLocation(location.getLatitude(),location.getLongitude());
+                    updateShow(location,city);
+                    curLocation=location;
+                } catch(Exception e){
+                    ShowToast("Location Not Found");
                 }
-
             }
         });
 
-        //jump to google map API activity
+        btn_start.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                if(curLocation!=null)sendGPSLocation(curLocation,connection,"Request");
+            }
+        });
+
         btn_map.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
             @Override
             public void onClick(View v)
             {
-                connection.SendGPSbyPost("0.0","0.0");
+                connection.SendGPSbyPost("0.0","0.0","Cancel");
             }
         });
     }
@@ -106,24 +108,27 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
         return false;
     }
 
+    //after checking the permission, the current location of user will be updated automatically
+    private void checkPermission(){
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED && checkSelfPermission(Manifest.permission.ACCESS_COARSE_LOCATION)!=
+                PackageManager.PERMISSION_GRANTED){
+            requestPermissions(new String[]{Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.ACCESS_COARSE_LOCATION},1);
+        }
+    }
+
     //check if the permission is granted
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode){
             case 1:
                 if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                    LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-                    Location location = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-                    try {
-                        String city = hereLocation(location.getLatitude(),location.getLongitude());
-                        updateShow(location,city);
-                        sendGPSLocation(location, connection);
-                    } catch(Exception e){
-                        Toast.makeText(this,"Not Found!", Toast.LENGTH_SHORT).show();
-                    }
+                    permissionGranted=true;
                 } else {
-                    Toast.makeText(this,"Permission is not Granted!", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(this,"Permission is not Granted!", Toast.LENGTH_SHORT).show();
+                    ShowToast("Permission is not Granted!");
                 }
+                break;
         }
     }
 
