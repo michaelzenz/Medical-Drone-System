@@ -12,6 +12,8 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -23,9 +25,12 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements ServerConnection.onResponseReadyListener{
     private ServerConnection connection;
-    private Button btn_locate,btn_map,btn_reset,btn_request;
+    private Button btn_locate,btn_map,btn_reset, btn_pause, btn_start, btn_cancel;
     private TextView textView;
-    @Override
+
+	float x1,x2,y1,y2;//check the swipe status
+    
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -33,7 +38,10 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
         btn_locate = (Button) findViewById(R.id.btn_locate);
         btn_map = (Button) findViewById(R.id.btn_map);
         btn_reset=(Button) findViewById(R.id.btn_reset);
-        btn_request=(Button) findViewById(R.id.btn_request);
+        btn_pause = (Button) findViewById(R.id.btn_pause);
+        btn_start = (Button) findViewById(R.id.btn_start);
+        btn_cancel = (Button) findViewById(R.id.btn_cancel);
+
         textView = (TextView) findViewById(R.id.textView);
 
         btn_locate.setOnClickListener(new View.OnClickListener() {
@@ -74,17 +82,28 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
             @Override
             public void onClick(View v)
             {
-                connection.SendGPSbyPost("0.0","0.0","Cancel");
+                connection.SendGPSbyPost("0.0","0.0");
             }
         });
-        btn_request.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                connection.SendGPSbyPost("0.0","0.0","Request");
-            }
-        });
+    }
+
+// check if need to swipe to another page
+    public boolean onTouchEvent(MotionEvent touchevent){
+        switch(touchevent.getAction()){
+            case MotionEvent.ACTION_DOWN:
+                x1 = touchevent.getX();
+                y1 = touchevent.getY();
+                break;
+            case MotionEvent.ACTION_UP:
+                x2 = touchevent.getX();
+                y2 = touchevent.getY();
+                if(x1 < x2){
+                    Intent i = new Intent(MainActivity.this, MapsActivity.class);
+                    startActivity(i);
+                }
+                break;
+        }
+        return false;
     }
 
     //check if the permission is granted
@@ -140,13 +159,13 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
         } else textView.setText("");
     }
 
-    //to send GPS location
-    private void sendGPSLocation(Location location, ServerConnection connection) {
+    //to send GPS location and user information
+    private void sendGPSLocation(Location location, ServerConnection connection, String action) {
         if (location != null) {
             try
             {
                 //then call this method to send
-                connection.SendGPSbyPost(((Double)location.getLongitude()).toString(),((Double)location.getLatitude()).toString(),"Request");
+                connection.SendGPSbyPost(((Double)location.getLongitude()).toString(),((Double)location.getLatitude()).toString(), action);
             }catch (Exception e){
                 e.printStackTrace();
             }

@@ -48,13 +48,14 @@ public class ServerConnection
         void onResponseReady(String Response_msg);
     }
     //call this method to send message, a thread will be created to listen from the server
+    //add the user identity to the server
     public void SendGPSbyPost(String Longitude, String Latitude,String Action)
     {
-        FormBody.Builder builder= new FormBody.Builder();
+        FormBody.Builder builder=new FormBody.Builder();
         builder.add("Longitude", Longitude);
         builder.add("Latitude", Latitude);
-        builder.add("Identity","User");
-        builder.add("Action",Action);
+        builder.add("Identity", "User");
+        builder.add("Action", Action);
         FormBody formBody=builder.build();
         Request request = new Request.Builder().url(url).post(formBody).build();
 
