@@ -31,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
     private Location curLocation;
 
 	float x1,x2,y1,y2;//check the swipe status
+
+
     
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
         btn_pause = (Button) findViewById(R.id.btn_pause);
         btn_start = (Button) findViewById(R.id.btn_start);
         btn_cancel = (Button) findViewById(R.id.btn_cancel);
-
         textView = (TextView) findViewById(R.id.textView);
 
         btn_locate.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements ServerConnection.
             }
         });
 
-        btn_reset.setOnClickListener(new View.OnClickListener()
+        btn_cancel.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
