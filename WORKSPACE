@@ -2,6 +2,8 @@ workspace(name = "org_tensorflow")
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 
+
+
 http_archive(
     name = "io_bazel_rules_closure",
     sha256 = "43c9b882fa921923bcba764453f4058d102bece35a37c9f6383c713004aacff1",
@@ -134,4 +136,51 @@ http_archive(
         "http://download.tensorflow.org/models/speech_commands_v0.01.zip",
     ],
 )
+
+#to load aar
+load("@bazel_tools//tools/build_defs/repo:maven_rules.bzl", "maven_aar")
+
+maven_aar(
+    name = "dji_sdk_sdk",
+    artifact = "com.dji:dji-sdk:4.9",
+)
+
+
+#to load the git_repository
+load("@bazel_tools//tools/build_defs/repo:git.bzl", "git_repository")
+
+# Transitive maven dependencies with Bazel.
+git_repository(
+  name = "org_pubref_rules_maven",
+  remote = "https://github.com/pubref/rules_maven.git",
+  commit = "25214e11ef391bd2dc08cad3a5637ceac93b0769",
+)
+
+
+load("@org_pubref_rules_maven//maven:rules.bzl", "maven_repositories", "maven_repository")
+maven_repositories()
+
+maven_repository(
+  name = "dji_sdk_provided",
+  deps = [
+    "com.dji:dji-sdk-provided:4.9",
+  ],
+  configurations=["compileOnly"],
+)
+
+load("@dji_sdk_provided//:rules.bzl", "dji_sdk_provided_compileOnly")
+dji_sdk_provided_compileOnly()
+
+# Google Maven Repository
+GMAVEN_TAG = "20181212-2" # or the tag from the latest release
+
+http_archive(
+    name = "gmaven_rules",
+    strip_prefix = "gmaven_rules-%s" % GMAVEN_TAG,
+    url = "https://github.com/bazelbuild/gmaven_rules/archive/%s.tar.gz" % GMAVEN_TAG,
+)
+
+load("@gmaven_rules//:gmaven.bzl", "gmaven_rules")
+
+gmaven_rules()
 
