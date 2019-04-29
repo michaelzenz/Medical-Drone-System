@@ -1,30 +1,18 @@
 # Medical-Drone-System
 A medical drone system project for UCI EECS 159: Senior Design
 
----
+This project aims to build a medical drone system, which allows its users to acquire medical support delivered by an AI-Controlled drone under emergencies to grand expensive devices like AED a wider accessibility
 
-<br><br><br>
+![](./res/Slides.jpg)
 
-## Double Week Plan
+The uesr can request for medical support through the UserApp, then a drone with the ordered medicine or medical device will be automatically delivered to the user. The drone will try to identify the user through computer vision and try to perform auto-landing when reaches the user.
 
-### Dec.12 to Dec.26
-#### Goal
-
-|Section| Goal | Progress |
-|---| ---  |---|
-| User App | Create UI and use websocket to connect| |
-| Control App|Learn how to use Mobile SDK, try to do some basic flight control on the simulator, answer call from user | |
-| Server|Create Connection using websocket||
-|Computer Vision|Investigate and if possible, train tiny yolo on Android, and work out demo of AprilTag||
-|Data Base|Build a java class with entities that allows to add userid, username, password and request higtory, using MySQL||
-
-#### Duty
-
-|Member| Duty | Progress |
-|---| ---|---|
-| Michael | Server Communication, Tiny YOLO||
-|Colonel|Control App Development||
-|Alex|User App Development||
-|Weixi|Build a website for exhibition by wix, develop Data Base part||
-
-
+# Project Structure
+|Branch|Description|
+|---|---|
+|master|description about the project|
+|ControlApp|The app that only implements the controller of the drone|
+|Document|Some course materials|
+|Server|The server program|
+|UserApp|The app for users to request a medical support|
+|Vision|The app that implements both controller and computer vision part|
